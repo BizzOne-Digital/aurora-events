@@ -1,26 +1,664 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   AURORA CELEBRATION - design tokens
+   ========================================================================== */
+@theme {
+  --color-plum-950: #14061f;
+  --color-plum-900: #1e0a2e;
+  --color-plum-800: #2d1043;
+  --color-plum-700: #43185f;
+  --color-plum-600: #5d2681;
+  --color-ivory: #fbf5ec;
+  --color-ivory-deep: #f3e8d8;
+  --color-coral: #ff6b5b;
+  --color-ember: #bf2f1c; /* coral for small text on ivory (AA contrast) */
+  --color-orchid: #d96ad2;
+  --color-orchid-deep: #9b2f94;
+  --color-peach: #ffc8a6;
+  --color-champagne: #d8b56d;
+  --color-muted: #5a4768;
+
+  --font-elegant: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    overflow-x: hidden; /* fallback for browsers without overflow: clip */
+    max-width: 100%;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-plum-900);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    max-width: 100%;
+    min-width: 320px;
+  }
+  img, svg, video {
+    max-width: 100%;
+  }
+  ::selection {
+    background: var(--color-coral);
+    color: var(--color-plum-950);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-peach);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    font-variation-settings: "SOFT" 60, "WONK" 0;
+  }
+  .font-display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 60, "WONK" 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==========================================================================
+   Type scale
+   ========================================================================== */
+.display-xl {
+  font-size: clamp(2.9rem, 9.2vw, 8.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+}
+.display-lg {
+  font-size: clamp(2.4rem, 6.2vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+.display-md {
+  font-size: clamp(1.9rem, 4vw, 3.3rem);
+  line-height: 1.04;
+}
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.section-pad {
+  padding-block: clamp(4.5rem, 10vw, 9rem);
+}
+.container-x {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+@media (min-width: 640px) {
+  .container-x {
+    width: min(100% - 4rem, 80rem);
+  }
+}
+
+/* first section after a PageHero whose arch photo overlaps downward */
+.after-hero {
+  padding-top: clamp(4rem, 8vw, 6rem);
+}
+@media (min-width: 1024px) {
+  .after-hero {
+    padding-top: 11.5rem;
+  }
+}
+
+/* Arch frames. Radii are exact (not "full") so the bottom corners keep their own radius:
+   top radius = half the width on both axes, expressed as a % of the height for each aspect ratio. */
+.arch {
+  border-radius: 50% 50% var(--rb, 1.75rem) var(--rb, 1.75rem) / var(--rt, 40%) var(--rt, 40%) var(--rb, 1.75rem) var(--rb, 1.75rem);
+}
+.arch-34 {
+  --rt: 37.5%;
+}
+.arch-45 {
+  --rt: 40%;
+}
+.arch-35 {
+  --rt: 30%;
+}
+.arch-soft {
+  border-radius: 50% 50% 1.5rem 1.5rem / 36% 36% 1.5rem 1.5rem;
+}
+
+/* oversized outlined section numbers */
+.big-number {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 13rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Gradients
+   ========================================================================== */
+.aurora-text {
+  background: linear-gradient(100deg, var(--color-peach), var(--color-coral) 30%, var(--color-orchid) 62%, var(--color-champagne) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-flow 9s ease-in-out infinite alternate;
+}
+.aurora-text-dark {
+  background: linear-gradient(100deg, #d92f1b, #b0309f 52%, #5d2681);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-flow 10s ease-in-out infinite alternate;
+}
+.aurora-fill {
+  background: linear-gradient(115deg, var(--color-peach), var(--color-coral) 45%, var(--color-orchid));
+}
+.aurora-deep {
+  background:
+    radial-gradient(60rem 36rem at 12% 8%, rgba(217, 106, 210, 0.38), transparent 60%),
+    radial-gradient(48rem 30rem at 88% 22%, rgba(255, 107, 91, 0.3), transparent 62%),
+    radial-gradient(52rem 34rem at 55% 105%, rgba(255, 200, 166, 0.2), transparent 60%),
+    var(--color-plum-950);
+}
+.grad-border {
+  border: var(--bw, 1.5px) solid transparent;
+  background:
+    linear-gradient(var(--grad-bg, var(--color-ivory)), var(--grad-bg, var(--color-ivory))) padding-box,
+    linear-gradient(120deg, var(--color-coral), var(--color-orchid), var(--color-champagne)) border-box;
+}
+.grad-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-orchid) 25%, var(--color-coral) 60%, var(--color-champagne) 85%, transparent);
+}
+
+/* drifting aurora blobs (transform-only animation, no animated blur) */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+.blob-a {
+  background: radial-gradient(circle at 50% 50%, rgba(217, 106, 210, 0.55), transparent 65%);
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+.blob-b {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 107, 91, 0.5), transparent 65%);
+  animation: drift-b 26s ease-in-out infinite alternate;
+}
+.blob-c {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 200, 166, 0.35), transparent 65%);
+  animation: drift-c 30s ease-in-out infinite alternate;
+}
+.blob-d {
+  background: radial-gradient(circle at 50% 50%, rgba(216, 181, 109, 0.3), transparent 65%);
+  animation: drift-a 34s ease-in-out infinite alternate-reverse;
+}
+@media (max-width: 767px) {
+  .blob-d,
+  .blob-c {
+    display: none;
+  }
+}
+
+/* subtle film grain for dark sections */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.45s var(--ease-out-expo), box-shadow 0.45s var(--ease-out-expo), background-color 0.3s, color 0.3s;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* primary: gradient fill with a slowly rotating luminous ring */
+.btn-primary {
+  color: var(--color-plum-950);
+  background: linear-gradient(115deg, var(--color-peach), var(--color-coral) 50%, var(--color-orchid));
+  background-size: 180% 100%;
+  box-shadow: 0 10px 30px -10px rgba(255, 107, 91, 0.7);
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle), var(--color-coral), var(--color-orchid), var(--color-peach), var(--color-champagne), var(--color-coral));
+  animation: spin-angle 5s linear infinite;
+  opacity: 0.85;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(115deg, var(--color-peach), var(--color-coral) 50%, var(--color-orchid));
+  background-size: 180% 100%;
+  transition: background-position 0.6s var(--ease-out-expo);
+}
+.btn-primary:hover::after {
+  background-position: 100% 0;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px -12px rgba(255, 107, 91, 0.85), 0 0 0 6px rgba(255, 107, 91, 0.14);
+}
+.btn-ghost-dark {
+  color: var(--color-ivory);
+  border: 1.5px solid rgba(251, 245, 236, 0.4);
+  background: rgba(251, 245, 236, 0.04);
+}
+.btn-ghost-dark:hover {
+  background: var(--color-ivory);
+  color: var(--color-plum-950);
+  border-color: var(--color-ivory);
+}
+.btn-ghost {
+  color: var(--color-plum-900);
+  border: 1.5px solid rgba(30, 10, 46, 0.35);
+}
+.btn-ghost:hover {
+  background: var(--color-plum-900);
+  color: var(--color-ivory);
+  border-color: var(--color-plum-900);
+}
+.link-underline {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  transition: background-size 0.5s var(--ease-out-expo);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1.5px;
+}
+
+/* ==========================================================================
+   Decorative motifs
+   ========================================================================== */
+.ribbon-path {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: ribbon-draw 3.2s var(--ease-out-expo) 0.4s forwards;
+}
+.ribbon-flow {
+  stroke-dasharray: 14 22;
+  animation: ribbon-flow 6s linear infinite;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* expanding service panels (desktop) */
+.panels {
+  display: none; /* desktop only: shown from lg up (a Tailwind `hidden` class would lose to this unlayered rule) */
+  gap: 0.85rem;
+  height: clamp(30rem, 62vh, 38rem);
+}
+@media (min-width: 1024px) {
+  .panels {
+    display: flex;
+  }
+}
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 50% 50% 1.75rem 1.75rem / 20% 20% 1.75rem 1.75rem;
+  transition: flex-grow 0.9s var(--ease-out-expo);
+}
+.panel:hover,
+.panel:focus-within,
+.panel[data-active="true"] {
+  flex-grow: 4.2;
+}
+
+.panels:has(.panel:hover) .panel[data-active="true"]:not(:hover) {
+  flex-grow: 1;
+}
+.panel .p-open {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 0.6s var(--ease-out-expo) 0.15s, transform 0.8s var(--ease-out-expo) 0.15s;
+}
+.panel .p-closed {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.panel:hover .p-open,
+.panel:focus-within .p-open,
+.panel[data-active="true"] .p-open {
+  opacity: 1;
+  transform: none;
+}
+.panel:hover .p-closed,
+.panel:focus-within .p-closed,
+.panel[data-active="true"] .p-closed {
+  opacity: 0;
+}
+.panels:has(.panel:hover) .panel[data-active="true"]:not(:hover):not(:focus-within) .p-open {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+}
+.panels:has(.panel:hover) .panel[data-active="true"]:not(:hover):not(:focus-within) .p-closed {
+  opacity: 1;
+}
+.float-slow {
+  animation: float-y 7s ease-in-out infinite alternate;
+}
+.float-mid {
+  animation: float-y 5.5s ease-in-out -2s infinite alternate;
+}
+.float-fast {
+  animation: float-y 4.5s ease-in-out -1s infinite alternate;
+}
+.scroll-cue-dot {
+  animation: scroll-cue 2.2s var(--ease-out-expo) infinite;
+}
+
+/* blog article typography */
+.prose-article {
+  font-size: 1.1875rem;
+  line-height: 1.8;
+  color: var(--color-plum-800);
+}
+.prose-article > * + * {
+  margin-top: 1.4em;
+}
+.prose-article h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin-top: 2.2em;
+  color: var(--color-plum-900);
+}
+.prose-article h3 {
+  font-size: 1.5rem;
+  margin-top: 1.8em;
+}
+.prose-article a {
+  color: var(--color-ember);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+}
+.prose-article ul,
+.prose-article ol {
+  padding-left: 1.4em;
+}
+.prose-article ul {
+  list-style: disc;
+}
+.prose-article ol {
+  list-style: decimal;
+}
+.prose-article li + li {
+  margin-top: 0.4em;
+}
+.prose-article blockquote {
+  border-left: 3px solid var(--color-coral);
+  padding-left: 1.2em;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: var(--color-plum-900);
+}
+.prose-article img {
+  border-radius: 1.25rem;
+  width: 100%;
+  height: auto;
+}
+.prose-article hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-orchid), transparent);
+}
+
+/* page transition curtain */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background: linear-gradient(160deg, var(--color-plum-900), var(--color-orchid-deep) 55%, var(--color-coral));
+  transform-origin: top;
+}
+
+/* ==========================================================================
+   Admin
+   ========================================================================== */
+@layer components {
+  .adm-field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1.5px solid #d9cde3;
+    background: #fff;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--color-plum-900);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .adm-field:focus {
+    outline: none;
+    border-color: var(--color-orchid);
+    box-shadow: 0 0 0 4px rgba(217, 106, 210, 0.2);
+  }
+  .adm-field[aria-invalid="true"] {
+    border-color: #c0261a;
+  }
+  .adm-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.35rem;
+    color: var(--color-plum-800);
+  }
+  .adm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 2.5rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .adm-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .adm-btn-primary {
+    background: linear-gradient(115deg, var(--color-coral), var(--color-orchid));
+    color: var(--color-plum-950);
+  }
+  .adm-btn-primary:hover:not(:disabled) {
+    box-shadow: 0 8px 22px -8px rgba(217, 106, 210, 0.8);
+    transform: translateY(-1px);
+  }
+  .adm-btn-soft {
+    background: #efe6f5;
+    color: var(--color-plum-800);
+  }
+  .adm-btn-soft:hover:not(:disabled) {
+    background: #e2d3ee;
+  }
+  .adm-btn-danger {
+    background: #fde8e6;
+    color: #9b1c10;
+  }
+  .adm-btn-danger:hover:not(:disabled) {
+    background: #fbd0cb;
+  }
+  .adm-card {
+    background: #fff;
+    border: 1px solid #eadff2;
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px rgba(30, 10, 46, 0.04);
+  }
+  .adm-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.15rem 0.65rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+@keyframes spin-angle {
+  to {
+    --angle: 360deg;
+  }
+}
+@keyframes text-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+@keyframes drift-a {
+  from {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(8%, 7%, 0) scale(1.18);
+  }
+}
+@keyframes drift-b {
+  from {
+    transform: translate3d(7%, 5%, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(-8%, -6%, 0) scale(0.92);
+  }
+}
+@keyframes drift-c {
+  from {
+    transform: translate3d(0, 6%, 0) scale(0.95);
+  }
+  to {
+    transform: translate3d(-6%, -8%, 0) scale(1.15);
+  }
+}
+@keyframes ribbon-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ribbon-flow {
+  to {
+    stroke-dashoffset: -72;
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+@keyframes float-y {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .aurora-text,
+  .aurora-text-dark,
+  .btn-primary::before,
+  .marquee-track,
+  .ribbon-flow,
+  .float-slow,
+  .float-mid,
+  .float-fast,
+  .scroll-cue-dot {
+    animation: none !important;
+  }
+  .ribbon-path {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+  .panel {
+    transition: none;
+  }
 }
