@@ -124,15 +124,15 @@ export default async function HomePage() {
 
           <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
             <ArchImage
-              src="/images/event-garden-wedding.jpg"
-              alt="Garden wedding ceremony with floral arch and empty chairs (illustrative image)"
+              src="/images/svc-wedding-empty.jpg"
+              alt="Minimal wedding ceremony arch of blush roses and greenery beside gold chairs on a white aisle (illustrative image)"
               sizes="(min-width:1024px) 34vw, 90vw"
               className="arch arch-45 aspect-[4/5]"
             />
             <div className="absolute -bottom-10 -left-4 w-[46%] sm:-left-10">
               <ArchImage
-                src="/images/event-wedding-table-details.jpg"
-                alt="Wedding table setting with plum napkin and gold cutlery (illustrative image)"
+                src="/images/svc-intimate-empty.jpg"
+                alt="Rustic terrace dinner table set with candles, linen runner and small flower vases at golden hour (illustrative image)"
                 sizes="20vw"
                 delay={0.3}
                 speed={14}

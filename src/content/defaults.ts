@@ -26,10 +26,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Ceremonies and receptions shaped around your story, your traditions and the way you want the day to feel.",
     description:
       "A wedding is made of hundreds of small decisions. We help you shape them into one cohesive celebration, from the first conversation about your vision and venue ideas to floral styling, décor, schedules and the details your guests will remember.\n\nWhether you imagine an outdoor ceremony, an elegant reception hall or a smaller family celebration, we coordinate the moving parts so you can spend your time with the people who matter. Contact us for pricing and to talk through what your day could look like.",
-    coverImage: img("event-wedding-ballroom", "Wedding reception with blush flowers and candlelit dining tables (illustrative image)"),
+    coverImage: img("svc-wedding-empty", "Minimal wedding ceremony arch of blush roses and greenery beside gold chairs on a white aisle (illustrative image)"),
     gallery: [
-      img("event-garden-wedding", "Garden wedding ceremony with floral arch and empty chairs (illustrative image)"),
-      img("event-wedding-table-details", "Wedding table setting with plum napkin and gold cutlery (illustrative image)"),
+      img("svc-wedding-people", "Couple walking hand in hand down a petal-strewn aisle toward a floral arch, guests seated on both sides (illustrative image)"),
     ],
     featured: true,
     published: true,
@@ -41,10 +40,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Conferences, launches, workshops and team gatherings arranged with a professional, well-paced finish.",
     description:
       "Business events work best when the logistics disappear into the background. We help you plan the format, the space, the flow of the day and the little touches that make guests and colleagues feel looked after.\n\nFrom seminars and workshops to launches, appreciation dinners and team celebrations, we arrange the details around your goals and your audience. Request a consultation and tell us what you want the event to achieve.",
-    coverImage: img("event-conference-venue", "Business conference venue with empty seating and blank stage screen (illustrative image)"),
+    coverImage: img("svc-corporate-empty", "Bright boardroom with a long oak table, notebooks, glasses and plants against an aubergine wall (illustrative image)"),
     gallery: [
-      img("event-corporate-gala", "Corporate gala venue with banquet tables and stage (illustrative image)"),
-      img("event-networking-reception", "Rooftop reception with cocktail tables and warm string lights (illustrative image)"),
+      img("svc-corporate-people", "Professionals networking with drinks at a sunlit reception with white flower arrangements (illustrative image)"),
     ],
     featured: true,
     published: true,
@@ -56,10 +54,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Festivals, community gatherings and traditional ceremonies planned with respect for the customs that matter to you.",
     description:
       "Cultural and community celebrations carry meaning that goes beyond décor. We take time to understand the traditions, rituals and expectations behind your event so the planning reflects them properly.\n\nShare the customs and colours that matter to your family or community, and we will work with you on the setting, styling and arrangements around them. Contact us to start the conversation.",
-    coverImage: img("event-cultural-celebration", "Cultural celebration décor with marigolds and brass lanterns (illustrative image)"),
+    coverImage: img("svc-cultural-empty", "Marigold and jasmine garland backdrop with two woven stools and a brass tray of petals (illustrative image)"),
     gallery: [
-      img("event-cultural-tablescape", "Cultural tablescape with brass lantern and embroidered runner (illustrative image)"),
-      img("event-festive-courtyard", "Courtyard celebration with fabric canopies and glowing lights (illustrative image)"),
+      img("svc-cultural-people", "Guests in festive traditional outfits chatting in front of a marigold garland backdrop (illustrative image)"),
     ],
     featured: true,
     published: true,
@@ -71,10 +68,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Birthdays, milestones, anniversaries and reasons to celebrate, styled with personality.",
     description:
       "A private party should feel like you. We help you choose a theme, space and atmosphere, then arrange the details that bring it together, from décor and seating to the moments you want to build the evening around.\n\nTell us what you are celebrating and who is coming, and we will help turn your ideas into a plan.",
-    coverImage: img("event-private-birthday", "Private birthday celebration with balloons and ivory cake (illustrative image)"),
+    coverImage: img("svc-private-empty", "Minimal party table with a small ivory cake, flowers and blush balloons (illustrative image)"),
     gallery: [
-      img("event-candlelit-lounge", "Event lounge with plum sofa and warm candlelight (illustrative image)"),
-      img("event-floral-installation", "Coral and ivory floral arrangement on a stone pedestal (illustrative image)"),
+      img("svc-private-people", "Friends toasting with glasses at a light-filled birthday gathering with balloons (illustrative image)"),
     ],
     featured: false,
     published: true,
@@ -86,10 +82,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Smaller guest lists with big attention to detail: dinners, showers, engagement celebrations and family occasions.",
     description:
       "Small celebrations deserve the same care as large ones. For dinners, showers, engagement parties and family occasions, we focus on the table, the setting and the atmosphere so the day feels warm and personal.\n\nIf you are planning something close and meaningful, we would be glad to help you shape it.",
-    coverImage: img("event-intimate-gathering", "Intimate conservatory gathering with seasonal flowers (illustrative image)"),
+    coverImage: img("svc-intimate-empty", "Rustic terrace dinner table set with candles, linen runner and small flower vases at golden hour (illustrative image)"),
     gallery: [
-      img("event-anniversary-dinner", "Anniversary terrace dinner with roses and candles (illustrative image)"),
-      img("event-floral-installation", "Coral and ivory floral arrangement on a stone pedestal (illustrative image)"),
+      img("svc-intimate-people", "Friends sharing dinner at a candlelit terrace table at sunset (illustrative image)"),
     ],
     featured: false,
     published: true,
@@ -101,10 +96,9 @@ export const DEFAULT_SERVICES: SeedService[] = [
     summary: "Galas, festivals and big-room occasions that need careful structure, flow and coordination.",
     description:
       "When the guest list grows, so does the importance of planning. Large celebrations call for clear timelines, thoughtful layouts and well-coordinated arrangements so guests feel welcome from arrival to farewell.\n\nTell us about the occasion, the guest count you have in mind and the kind of space you are considering, and we will help you work out the next steps.",
-    coverImage: img("event-large-celebration", "Large marquee celebration with chandeliers and banquet seating (illustrative image)"),
+    coverImage: img("svc-large-people", "Guests applauding in a grand chandelier-lit ballroom set for a gala dinner (illustrative image)"),
     gallery: [
-      img("event-corporate-gala", "Corporate gala venue with banquet tables and stage (illustrative image)"),
-      img("event-wedding-ballroom", "Wedding reception with blush flowers and candlelit dining tables (illustrative image)"),
+      img("event-large-celebration", "Large marquee celebration with chandeliers and banquet seating (illustrative image)"),
     ],
     featured: false,
     published: true,
@@ -121,21 +115,18 @@ const g = (file: string, alt: string, caption: string, category: string, order: 
 });
 
 export const DEFAULT_GALLERY: SeedGallery[] = [
-  g("event-corporate-gala", "Corporate gala venue with banquet tables and stage (illustrative image)", "Banquet and stage setup", "Corporate", 1),
-  g("event-garden-wedding", "Garden wedding ceremony with floral arch and empty chairs (illustrative image)", "Garden ceremony seating", "Wedding", 2),
-  g("event-festive-courtyard", "Courtyard celebration with fabric canopies and glowing lights (illustrative image)", "Courtyard under canopies", "Cultural", 3),
-  g("event-floral-installation", "Coral and ivory floral arrangement on a stone pedestal (illustrative image)", "Coral and ivory florals", "Intimate", 4),
-  g("event-networking-reception", "Rooftop reception with cocktail tables and warm string lights (illustrative image)", "Rooftop reception", "Corporate", 5),
-  g("event-anniversary-dinner", "Anniversary terrace dinner with roses and candles (illustrative image)", "Terrace anniversary dinner", "Intimate", 6),
-  g("event-cultural-tablescape", "Cultural tablescape with brass lantern and embroidered runner (illustrative image)", "Brass lantern tablescape", "Cultural", 7),
-  g("event-candlelit-lounge", "Event lounge with plum sofa and warm candlelight (illustrative image)", "Candlelit lounge", "Party", 8),
-  g("event-wedding-table-details", "Wedding table setting with plum napkin and gold cutlery (illustrative image)", "Table setting details", "Wedding", 9),
-  g("event-wedding-ballroom", "Wedding reception with blush flowers and candlelit dining tables (illustrative image)", "Reception ballroom", "Wedding", 10),
-  g("event-conference-venue", "Business conference venue with empty seating and blank stage screen (illustrative image)", "Conference venue", "Corporate", 11),
-  g("event-cultural-celebration", "Cultural celebration décor with marigolds and brass lanterns (illustrative image)", "Marigolds and lanterns", "Cultural", 12),
-  g("event-private-birthday", "Private birthday celebration with balloons and ivory cake (illustrative image)", "Birthday celebration", "Party", 13),
-  g("event-intimate-gathering", "Intimate conservatory gathering with seasonal flowers (illustrative image)", "Conservatory gathering", "Intimate", 14),
-  g("event-large-celebration", "Large marquee celebration with chandeliers and banquet seating (illustrative image)", "Marquee celebration", "Large event", 15),
+  g("svc-wedding-people", "Couple walking hand in hand down a petal-strewn aisle toward a floral arch, guests seated on both sides (illustrative image)", "Walking down the aisle", "Wedding", 1),
+  g("svc-corporate-empty", "Bright boardroom with a long oak table, notebooks, glasses and plants against an aubergine wall (illustrative image)", "Boardroom setup", "Corporate", 2),
+  g("svc-cultural-people", "Guests in festive traditional outfits chatting in front of a marigold garland backdrop (illustrative image)", "Festive gathering", "Cultural", 3),
+  g("svc-intimate-empty", "Rustic terrace dinner table set with candles, linen runner and small flower vases at golden hour (illustrative image)", "Terrace dinner table", "Intimate", 4),
+  g("svc-private-people", "Friends toasting with glasses at a light-filled birthday gathering with balloons (illustrative image)", "A birthday toast", "Party", 5),
+  g("svc-large-people", "Guests applauding in a grand chandelier-lit ballroom set for a gala dinner (illustrative image)", "Gala evening", "Large event", 6),
+  g("svc-wedding-empty", "Minimal wedding ceremony arch of blush roses and greenery beside gold chairs on a white aisle (illustrative image)", "Floral ceremony arch", "Wedding", 7),
+  g("svc-corporate-people", "Professionals networking with drinks at a sunlit reception with white flower arrangements (illustrative image)", "Networking reception", "Corporate", 8),
+  g("svc-cultural-empty", "Marigold and jasmine garland backdrop with two woven stools and a brass tray of petals (illustrative image)", "Marigold backdrop", "Cultural", 9),
+  g("svc-intimate-people", "Friends sharing dinner at a candlelit terrace table at sunset (illustrative image)", "Dinner at sunset", "Intimate", 10),
+  g("svc-private-empty", "Minimal party table with a small ivory cake, flowers and blush balloons (illustrative image)", "Cake and balloons", "Party", 11),
+  g("event-large-celebration", "Large marquee celebration with chandeliers and banquet seating (illustrative image)", "Marquee celebration", "Large event", 12),
 ];
 
 export const DEFAULT_FAQS: { question: string; answer: string; page: "services" | "booking" | "contact"; order: number }[] = [
@@ -231,7 +222,7 @@ export const DEFAULT_POSTS: (Omit<PostDTO, "id" | "publishedAt"> & { daysAgo: nu
     title: "Five Questions to Answer Before You Plan Any Event",
     slug: "five-questions-before-you-plan",
     excerpt: "A clear starting point makes every later decision easier. Begin with these five questions.",
-    coverImage: { url: "/images/event-intimate-gathering.jpg", alt: "Intimate conservatory gathering with seasonal flowers (illustrative image)" },
+    coverImage: { url: "/images/svc-intimate-empty.jpg", alt: "Rustic terrace dinner table set with candles, linen runner and small flower vases at golden hour (illustrative image)" },
     authorName: "7270020 Canada Ltd.",
     seoTitle: "Five Questions to Answer Before You Plan Any Event",
     seoDescription: "Five simple questions that give your event planning a clear starting point.",
@@ -264,7 +255,7 @@ If you would like help turning these answers into a plan, [request a consultatio
     title: "Choosing a Venue: What to Look For Beyond the Photos",
     slug: "choosing-a-venue",
     excerpt: "Photos only tell part of the story. Here is what to ask and check before you commit to a space.",
-    coverImage: { url: "/images/event-large-celebration.jpg", alt: "Large marquee celebration with chandeliers and banquet seating (illustrative image)" },
+    coverImage: { url: "/images/svc-large-people.jpg", alt: "Guests applauding in a grand chandelier-lit ballroom set for a gala dinner (illustrative image)" },
     authorName: "7270020 Canada Ltd.",
     seoTitle: "Choosing a Venue: What to Look For Beyond the Photos",
     seoDescription: "Practical questions to ask when choosing an event venue.",
@@ -297,7 +288,7 @@ Choosing a venue is easier with a second opinion. [Contact us](/contact) if you 
     title: "Planning a Celebration That Honours Your Traditions",
     slug: "celebrations-that-honour-traditions",
     excerpt: "Cultural customs give an event its meaning. Here is how to bring them into the plan from the start.",
-    coverImage: { url: "/images/event-cultural-celebration.jpg", alt: "Cultural celebration décor with marigolds and brass lanterns (illustrative image)" },
+    coverImage: { url: "/images/svc-cultural-people.jpg", alt: "Guests in festive traditional outfits chatting in front of a marigold garland backdrop (illustrative image)" },
     authorName: "7270020 Canada Ltd.",
     seoTitle: "Planning a Celebration That Honours Your Traditions",
     seoDescription: "How to build cultural traditions into your event plan from the start.",

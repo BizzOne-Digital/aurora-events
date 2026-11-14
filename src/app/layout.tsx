@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "7270020 Canada Ltd.",
     locale: "en_CA",
-    images: [{ url: "/images/event-wedding-ballroom.jpg", width: 1536, height: 1024, alt: "Wedding reception with blush flowers and candlelit dining tables" }],
+    images: [{ url: "/images/svc-wedding-people.jpg", width: 1600, height: 1073, alt: "Couple walking down a petal-strewn aisle toward a floral arch" }],
   },
   twitter: { card: "summary_large_image" },
 };

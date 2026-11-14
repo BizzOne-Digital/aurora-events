@@ -25,7 +25,7 @@ export default async function ServicesPage() {
         title="Celebrations of every kind, shaped around you."
         accentFrom={3}
         intro="Whatever the occasion and whatever the size, we help you plan and arrange it. Contact us for pricing and request a consultation to start the conversation."
-        image={{ src: "/images/event-garden-wedding.jpg", alt: "Garden wedding ceremony with floral arch and empty chairs (illustrative image)" }}
+        image={{ src: "/images/svc-wedding-people.jpg", alt: "Couple walking hand in hand down a petal-strewn aisle toward a floral arch, guests seated on both sides (illustrative image)" }}
       />
 
       {services.length === 0 ? (

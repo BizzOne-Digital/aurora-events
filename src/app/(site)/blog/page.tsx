@@ -21,7 +21,7 @@ export default async function BlogPage() {
         title="Ideas for planning beautiful events."
         accentFrom={3}
         intro="Practical guidance, inspiration and things we think are worth knowing before you plan your celebration."
-        image={{ src: "/images/event-floral-installation.jpg", alt: "Coral and ivory floral arrangement on a stone pedestal (illustrative image)" }}
+        image={{ src: "/images/svc-corporate-empty.jpg", alt: "Bright boardroom with a long oak table, notebooks, glasses and plants against an aubergine wall (illustrative image)" }}
       />
       <section className="section-pad after-hero">
         <div className="container-x">

@@ -19,7 +19,7 @@ export default async function GalleryPage() {
         title="Moods, colours and moments we love."
         accentFrom={3}
         intro="Browse styling inspiration across weddings, corporate events, cultural celebrations and more. Filter by category and open any image to see it larger."
-        image={{ src: "/images/event-candlelit-lounge.jpg", alt: "Event lounge with plum sofa and warm candlelight (illustrative image)" }}
+        image={{ src: "/images/svc-large-people.jpg", alt: "Guests applauding in a grand chandelier-lit ballroom set for a gala dinner (illustrative image)" }}
       />
       <section className="section-pad after-hero">
         <div className="container-x">

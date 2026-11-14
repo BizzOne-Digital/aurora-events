@@ -40,7 +40,7 @@ export default async function AboutPage() {
         title="Planning with warmth, creativity and care."
         accentFrom={2}
         intro={`${settings.businessName} is an event planning and arrangement company. We help people bring gatherings of every size to life.`}
-        image={{ src: "/images/event-wedding-table-details.jpg", alt: "Wedding table setting with plum napkin and gold cutlery (illustrative image)" }}
+        image={{ src: "/images/svc-intimate-empty.jpg", alt: "Rustic terrace dinner table set with candles, linen runner and small flower vases at golden hour (illustrative image)" }}
       />
 
       <section className="section-pad after-hero">
@@ -87,14 +87,14 @@ export default async function AboutPage() {
             </Stagger>
             <div className="relative mx-auto grid w-full max-w-md grid-cols-2 gap-4 lg:col-span-5 lg:max-w-none">
               <ArchImage
-                src="/images/event-networking-reception.jpg"
-                alt="Rooftop reception with cocktail tables and warm string lights (illustrative image)"
+                src="/images/svc-corporate-people.jpg"
+                alt="Professionals networking with drinks at a sunlit reception with white flower arrangements (illustrative image)"
                 sizes="(min-width:1024px) 20vw, 45vw"
                 className="arch arch-35 aspect-[3/5] [--rb:1.5rem]"
               />
               <ArchImage
-                src="/images/event-anniversary-dinner.jpg"
-                alt="Anniversary terrace dinner with roses and candles (illustrative image)"
+                src="/images/svc-private-people.jpg"
+                alt="Friends toasting with glasses at a light-filled birthday gathering with balloons (illustrative image)"
                 sizes="(min-width:1024px) 20vw, 45vw"
                 delay={0.2}
                 className="mt-14 aspect-[3/5] rounded-3xl"

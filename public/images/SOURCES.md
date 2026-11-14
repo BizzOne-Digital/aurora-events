@@ -1,5 +1,6 @@
 # Image sources
 
-- event-*.jpg (15 images) were supplied from design-assets/15-event-photos.zip and resized and compressed to JPEG. They are AI-generated, illustrative event imagery. They are NOT photographs of events organised by 7270020 Canada Ltd. and are labelled as illustrative on the site.
+- svc-*.jpg (11 images) are the client-approved AI-generated illustrative event images used for the six services and the gallery. Each service has one image without people (cover) and one with people (extra image), except Large Celebrations.
+- event-large-celebration.jpg, event-*.jpg are earlier AI-generated illustrative images (design-assets/15-event-photos.zip), kept only where still referenced.
 - hero-bg.jpg is the supplied hero background (AI-generated, illustrative).
-- Alt text comes from the supplied image-manifest.json.
+- None of these are photographs of events organised by 7270020 Canada Ltd. They are labelled as illustrative on the site.
